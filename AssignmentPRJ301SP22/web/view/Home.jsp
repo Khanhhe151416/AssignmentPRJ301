@@ -21,7 +21,7 @@
             </div>
             
               <div class ="name_restaurant">
-                <h2>Hyosan</h2>
+                <h2>칸 도안</h2>
             </div>
             
             <div class="right">
@@ -33,12 +33,46 @@
         </div>
         
         <div class="mid">
-            
+            <div class="banner" style="background-color: black;">
+                <div class="items" style="float: left;">
+                <a href="">Home</a>
+                <a href="">Menu</a>
+                <a href="">Promotion</a>
+                <a href="">Table</a>
+                <a href="">News</a>
+                <a href="">Contact</a>
+                </div>
+                
+                
+            </div>
 
         </div>
-        
-            <footer>
-                
-            </footer>
+            <div class="footer" style="background-color: #757F88; width: 100%; height: 200px;">
+                <div class="col1" style="float: left; width: 10%; margin-right:80px ; margin-left: 50px">
+                    <p>About us</p> 
+                    <p>lslslsllsls</p> 
+                    <p>lslslsllsls</p> 
+                    <p>lslslsllsls</p> 
+                </div>
+                <div class="col2" style="float: left; width: 10%;  margin-right:80px ; margin-left: 30px    ">
+                    <p>Event</p> 
+                    <p>lslslsllsls</p> 
+                    <p>lslslsllsls</p> 
+                    <p>lslslsllsls</p> 
+                </div>
+                <div class="col3" style="float: left; width: 10%;  margin-right:80px ; margin-left: 30px   ">
+                    <p>Address</p> 
+                    <p>lslslsllsls</p> 
+                    <p>lslslsllsls</p> 
+                    <p>lslslsllsls</p> 
+                </div>
+                <div class="col4" style="float: left; width: 10%;  margin-right:80px ; margin-left: 30px   ">
+                    <p>Contact</p> 
+                    <p>Email:Khanhdvhe151416@fpt.edu.vn</p> 
+                    <p>Phone:0989346734</p> 
+                    <p>Facebook:DoanKhanh(pun)</p> 
+                </div>
+            </div>
+           
     </body>
 </html>
