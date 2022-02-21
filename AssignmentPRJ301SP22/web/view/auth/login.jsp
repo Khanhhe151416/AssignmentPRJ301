@@ -30,12 +30,7 @@
         body{
             background-image: url("http://bepnuonghanquoc.com/upload/images/thi%E1%BA%BFt%20k%E1%BA%BF%20nh%C3%A0%20h%C3%A0ng%20n%C6%B0%E1%BB%9Bng%20kh%C3%B4ng%20kh%C3%B3i.jpg");
         }
-        .create{
-            text-decoration: none;
-            font-size: 12px;
-            margin-left: 30px;
-            margin-right: 30px;
-        }
+        
         a{
             text-decoration: none;
             margin-left: 30px;
@@ -68,8 +63,11 @@
                     <input type="submit" value="Login" class="float">
                     <p style="color: red">${err}</p>
                 </form>
-                <a href="${insert}">Register</a>
-                <a class="Cancel" href="../view/Home.jsp">Cancel</a>
+                    <a href="${insert}">Register</a>
+                    <a class="Cancel" href="../view/Home.jsp">Cancel</a>
+                    <br>
+                    <br><a href="update">Change Password</a>
+                
             </div>
         </div>
     </body>

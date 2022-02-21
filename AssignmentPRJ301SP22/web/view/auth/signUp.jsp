@@ -52,8 +52,8 @@
             Repeat Password<br>
             <input type="password" name="repass" value="${param.repass}" placeholder="Repeat Password"/>
             <br>
-            <p style="font-size: 10px; color: red;">${err}</p>
-            <p style="font-size: 15px; color: #36E523;">${success}</p>
+            <p style="font-size: 13px; color: red;">${err}</p>
+            <p style="font-size: 13px; color: #36E523;">${success}</p>
             <br>
             <input type="submit" value="Register"/>
             <input type="button" value="Login" onclick="ForwardLogin()" style="margin-left: 40px;"/>

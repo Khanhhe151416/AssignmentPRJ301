@@ -41,7 +41,7 @@
                 <a href="">Promotion</a>
                 <a href="">Order</a>
                 <a href="">News</a>
-                <a href="">Contact</a>
+                
                 </div>
                 
                 
@@ -65,7 +65,7 @@
                     <p>Address</p> 
                     <p>Cơsở1:Busan</p> 
                     <p>Cơsở2:Seoul</p> 
-                    <p>Cơsở3:Hyosan</p> 
+                    <p>Cơsở3:Incheon</p> 
                 </div>
                 <div class="col4" style="float: left; width: 10%;  margin-right:80px ; margin-left: 30px   ">
                     <p>Contact</p> 
