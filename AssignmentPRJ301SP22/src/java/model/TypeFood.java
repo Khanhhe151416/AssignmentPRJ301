@@ -9,11 +9,9 @@ package model;
  *
  * @author doan7
  */
-public class food {
+public class TypeFood {
     private int id;
     private String name;
-    private float price;
-    private TypeFood type;
 
     public int getId() {
         return id;
@@ -29,22 +27,6 @@ public class food {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public TypeFood getType() {
-        return type;
-    }
-
-    public void setType(TypeFood type) {
-        this.type = type;
     }
     
     
