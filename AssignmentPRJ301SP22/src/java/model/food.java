@@ -13,6 +13,7 @@ public class food {
     private int id;
     private String name;
     private float price;
+    private String image;
     private TypeFood type;
 
     public int getId() {
@@ -39,6 +40,15 @@ public class food {
         this.price = price;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+    
+
     public TypeFood getType() {
         return type;
     }
@@ -46,6 +56,7 @@ public class food {
     public void setType(TypeFood type) {
         this.type = type;
     }
+    
     
     
 }

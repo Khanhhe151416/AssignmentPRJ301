@@ -16,6 +16,7 @@
     </head>
     <body>
         <c:url value="/account/login" var="login"/>
+        <c:url value="/food/list" var="menu"/>
         <div class="header" >
             <div class="left">
                 <img src="http://images.squarespace-cdn.com/content/v1/56fd52eb7da24f1b26011b42/1461637294436-YVPQ107P54NFARBCENQJ/logo+khong+phong+nen.png?format=1500w" alt=""/>
@@ -37,7 +38,7 @@
             <div class="banner" style="background-color: black;">
                 <div class="items" style="float: left;">
                 <a href="">Home</a>
-                <a href="">Menu</a>
+                <a href="${menu}">Menu</a>
                 <a href="">Promotion</a>
                 <a href="">Order</a>
                 <a href="">News</a>
@@ -46,6 +47,10 @@
                 
                 
             </div>
+                
+                <div >
+                    
+                </div>    
 
         </div>
             <div class="footer" style="background-color: #757F88; width: 100%; height: 200px;">
@@ -55,7 +60,7 @@
                     <p>lslslsllsls</p> 
                     <p>lslslsllsls</p> 
                 </div>
-                <div class="col2" style="float: left; width: 10%;  margin-right:80px ; margin-left: 30px    ">
+                <div class="col2" style="float: left; width: 10%;  margin-right:80px ; margin-left: 30px ">
                     <p>Event</p> 
                     <p>Christmas</p> 
                     <p>Valentine</p> 

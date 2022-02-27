@@ -12,6 +12,10 @@
         <servlet-name>UpdateController</servlet-name>
         <servlet-class>controller.auth.UpdateController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FoodListController</servlet-name>
+        <servlet-class>controller.food.FoodListController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/account/login</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>UpdateController</servlet-name>
         <url-pattern>/account/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FoodListController</servlet-name>
+        <url-pattern>/food/list</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

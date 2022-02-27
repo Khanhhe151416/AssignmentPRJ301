@@ -24,7 +24,7 @@ public class FoodDBContext extends DBContext{
     public List<food> getFoods(){
         List<food> foods = new ArrayList<>();
         try {
-            String sql ="select fid,f.name,price,tid\n" +
+            String sql ="select fid,f.name,price,image,tid\n" +
                         "from Food f join TypeFood t on f.typeId = t.tid;  ";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
@@ -34,6 +34,7 @@ public class FoodDBContext extends DBContext{
                 f.setId(rs.getInt("fid"));
                 f.setName(rs.getString("name"));
                 f.setPrice(rs.getFloat("price"));
+                f.setImage(rs.getString("image"));
                 TypeFood tf = new TypeFood();
                 tf.setId(rs.getInt("tid"));
                 f.setType(tf);
