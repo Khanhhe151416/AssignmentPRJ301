@@ -12,9 +12,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
     
-        <link href="../Home.css" rel="stylesheet" type="text/css"/>
+        <script src="../js/pagger.js" type="text/javascript"></script>
+        <link href="../css/Home.css" rel="stylesheet" type="text/css"/>
     </head>
+    
     <body>
+        
         <c:url value="/account/login" var="login"/>
         <c:url value="/food/list" var="menu"/>
         <div class="header" >
@@ -48,12 +51,29 @@
                 
             </div>
                 
-                <div >
+                <div class="FoodList" >
+                    <c:forEach items="${requestScope.Foods}" var="f">
+                        <div class="listfoods" style="float: left;width:35%;height: 120px; margin-top: 30px;margin-left: 70px; border: 1px #6C757C; background-color:#6C757C " > 
+                            
+                            <img  style="width: 120px; height: 120px;float: left;" src="${f.image}"/>
+                            <div style="float: right; margin-right: 50px">                               
+                                <br>${f.name}<br><br>
+                                ${f.price}$
+                            </div>
+                        </div>
+                    </c:forEach>
                     
-                </div>    
+                    
+                </div> 
 
         </div>
-            <div class="footer" style="background-color: #757F88; width: 100%; height: 200px;">
+                
+                <div id="paggerbottom" class="pagger" style="margin-top: 470px; margin-left: 400px;" ></div>
+                    <script>
+                        generatePagger("paggerbottom",${requestScope.pageIndex},${requestScope.totalPage},2);
+                    </script>
+                    
+            <div class="footer" style="background-color: #757F88; width: 100%; height: 200px; margin-top: 100px;">
                 <div class="col1" style="float: left; width: 10%; margin-right:80px ; margin-left: 50px">
                     <p>About us</p> 
                     <p>lslslsllsls</p> 

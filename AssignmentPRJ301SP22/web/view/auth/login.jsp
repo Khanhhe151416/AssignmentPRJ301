@@ -44,6 +44,7 @@
 
     <body>
         <c:url value="/account/insert" var="insert"/>
+        <c:url value="/home/food" var="home"/>
 
         <div class="login">
             <div class="heading">
@@ -64,7 +65,7 @@
                     <p style="color: red">${err}</p>
                 </form>
                     <a href="${insert}">Register</a>
-                    <a class="Cancel" href="../view/Home.jsp">Cancel</a>
+                    <a class="Cancel" href="${home}">Cancel</a>
                     <br>
                     <br><a href="update">Change Password</a>
                 
