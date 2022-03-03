@@ -6,6 +6,7 @@
 package controller.food;
 
 import dal.FoodDBContext;
+import dal.PaggingDBContext;
 import dal.TypeFoodDBConext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,12 +30,24 @@ public class FoodListController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            FoodDBContext fDB = new FoodDBContext();
-            List<food> foods = fDB.getFoods();
-            TypeFoodDBConext tfDB = new TypeFoodDBConext();
-            List<TypeFood> types = tfDB.getTypeFoods();
-            request.setAttribute("TypeFoods", types);
+            PaggingDBContext pDB = new PaggingDBContext();
+            String raw_page = request.getParameter("page");
+            int pageSize = 10;
+            
+            if(raw_page == null || raw_page.length() == 0){
+                raw_page = "1";
+                
+            }
+            
+            int pageIndex = Integer.parseInt(raw_page);
+            int totalRow = pDB.getRowCount();
+            int totalPage = (totalRow % pageSize == 0)? totalRow / pageSize : (totalRow / pageSize) + 1;
+            List<food> foods = pDB.getFoods(pageSize, pageIndex);
+            request.setAttribute("pageIndex", pageIndex);
+            request.setAttribute("totalPage", totalPage);
             request.setAttribute("Foods", foods);
+            TypeFoodDBConext tDB = new TypeFoodDBConext();
+            request.setAttribute("TypeFoods", tDB.getTypeFoods());
             request.getRequestDispatcher("../view/food/list.jsp").forward(request, response);
             
         }
