@@ -11,12 +11,32 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <script src="../js/paggerMenu.js" type="text/javascript"></script>
+        
     </head>
     <style>
         img{
             width: 100px;
             height: 60px;
         }
+        .pagger{
+            margin-top: 30px;
+        }
+        .pagger a{
+    border: 1px solid aliceblue;
+    border-radius: 2px;
+    padding: 2px;
+    background-color: #7E8184;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+        .pagger span{
+    font-weight: bold;
+    border: 1px solid aliceblue;
+    background-color: blue;
+    border-radius: 2px;
+    padding: 2px;
+}
     </style>
     <body>
     
@@ -42,5 +62,9 @@
                 </tr>
             </c:forEach>
         </table>
+        <div class="pagger" id="paggerbottom"></div>
+        <script>
+            generatePagger('paggerbottom',${requestScope.pageIndex},${requestScope.totalPage},2);
+        </script>
     </body>
 </html>
