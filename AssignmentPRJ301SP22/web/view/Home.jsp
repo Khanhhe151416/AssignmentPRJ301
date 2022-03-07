@@ -30,7 +30,7 @@
             </div>
             
             <div class="right">
-                <a href="${manage}">Admin</a>
+                <a href="../view/admin/admin.jsp">Admin</a>
                 <img src="https://logodix.com/logo/1727561.png">
                 <a href="${login}">Login</a>
             </div>

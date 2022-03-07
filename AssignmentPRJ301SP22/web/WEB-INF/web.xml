@@ -20,6 +20,10 @@
         <servlet-name>FoodHomeController</servlet-name>
         <servlet-class>controller.home.FoodHomeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminFoodListController</servlet-name>
+        <servlet-class>controller.admin.AdminFoodListController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/account/login</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>FoodHomeController</servlet-name>
         <url-pattern>/home/food</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminFoodListController</servlet-name>
+        <url-pattern>/admin/food/list</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
