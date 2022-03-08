@@ -27,3 +27,13 @@
      }
      container.innerHTML = text;
  }
+ function doUpdate(id){
+     window.location.href = "update?fid="+id;
+ }
+ function doDelete(id){
+     
+     var c = confirm("Do you want to delete ?");
+     if(c){
+         window.location.href = "delete?fid="+id;
+     }
+ }

@@ -46,4 +46,69 @@ public class FoodDBContext extends DBContext{
         }
         return foods;
     }
+    
+    public food getfood(int id){
+        try {
+            String sql ="select f.fid,f.name as fname,f.price,f.image,tf.tid,tf.name from Food f join TypeFood tf on f.typeId = tf.tid where fid = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, id);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next()){
+                food f = new food();
+                f.setId(id);
+                f.setName(rs.getString("fname"));
+                f.setPrice(rs.getFloat("price"));
+                f.setImage(rs.getString("image"));
+                TypeFood tf = new TypeFood();
+                tf.setId(rs.getInt("tid"));
+                tf.setName(rs.getString("name"));
+                f.setType(tf);
+                return f;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FoodDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+        
+    }
+    
+    public void insert(food f){
+        try {
+            String sql = "Insert into Food(name,price,image,typeId) values(?,?,?,?)";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, f.getName());
+            stm.setFloat(2, f.getPrice());
+            stm.setString(3, f.getImage());
+            stm.setInt(4, f.getType().getId());
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(FoodDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void update( food f){
+        try {
+            String sql =" Update [Food] SET name = ?, price = ?, image = ?, typeId = ? where fid = ? ";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, f.getName());
+            stm.setFloat(2, f.getPrice());
+            stm.setString(3,f.getImage());
+            stm.setInt(4, f.getType().getId());
+            stm.setInt(5, f.getId());
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(FoodDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public void delete(int id){
+        try {
+            String sql = "Delete from Food where fid = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, id);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(FoodDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

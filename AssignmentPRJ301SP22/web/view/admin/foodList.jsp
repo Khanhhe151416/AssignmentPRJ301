@@ -14,6 +14,7 @@
         <title>JSP Page</title>
         <link href="../../css/adminFoodList.css" rel="stylesheet" type="text/css"/>
         <script src="../../js/adminFoodPagger.js" type="text/javascript"></script>
+        
     </head>
     <body>
         <table border="1px">
@@ -33,8 +34,8 @@
                     <td>${f.price}</td>
                     <td><img src="${f.image}"/></td>
                     <td>${f.type.name}</td>
-                    <td><input type="button" onclick="" value="Update"></td>
-                    <td><input type="button" onclick="" value="Delete"></td>
+                    <td><input type="button" onclick="doUpdate(${f.id})" value="Update"></td>
+                    <td><input type="button" onclick="doDelete(${f.id})" value="Delete"></td>
                 </tr>
                 
             </c:forEach>
@@ -44,6 +45,6 @@
             generatePagger('paggerbottom',${requestScope.pageIndex},${requestScope.totalPage},2);
         </script>
         <br>
-        <a href="">Insert</a>
+        <a href="insert">Insert</a>
     </body>
 </html>
