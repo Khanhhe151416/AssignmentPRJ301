@@ -39,10 +39,10 @@
 }
     </style>
     <body>
-    
+        <c:url value="/home/food" var="home"/>
         <table border="1px">
             <tr>
-                <td>ID</td>
+                
                 <td>Name</td>
                 <td>Price</td>
                 <td>Image</td>
@@ -50,7 +50,7 @@
             </tr>
             <c:forEach items="${requestScope.Foods}" var="f">
                 <tr>
-                    <td>${f.id}</td>
+                    
                     <td>${f.name}</td>
                     <td>${f.price}$</td>
                     <td><img src="${f.image}"></td>
@@ -62,7 +62,8 @@
                 </tr>
             </c:forEach>
         </table>
-        <div class="pagger" id="paggerbottom"></div>
+        <div class="pagger" id="paggerbottom"></div><br>
+        <a href="${home}">Home</a>
         <script>
             generatePagger('paggerbottom',${requestScope.pageIndex},${requestScope.totalPage},2);
         </script>
