@@ -36,6 +36,10 @@
         <servlet-name>AdminFoodDeleteController</servlet-name>
         <servlet-class>controller.admin.AdminFoodDeleteController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StaffListController</servlet-name>
+        <servlet-class>controller.staff.StaffListController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/account/login</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>AdminFoodDeleteController</servlet-name>
         <url-pattern>/admin/food/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffListController</servlet-name>
+        <url-pattern>/staff/list</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

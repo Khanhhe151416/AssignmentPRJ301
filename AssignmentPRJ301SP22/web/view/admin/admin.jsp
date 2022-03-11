@@ -16,6 +16,7 @@
         <c:url value="/admin/food/list" var="listFood"/>
         <a href="${listFood}">Food Management</a><br>
         <a href="">Table Management</a>
+        <a href="">Staff Management</a>
         
     </body>
 </html>
