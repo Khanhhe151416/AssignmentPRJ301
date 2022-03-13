@@ -12,12 +12,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.table;
 
 /**
  *
  * @author doan7
  */
-public class DeleteTableController extends HttpServlet {
+public class DetailTableController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,10 +34,11 @@ public class DeleteTableController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-           int id = Integer.parseInt(request.getParameter("tid"));
+           int id = Integer.parseInt(request.getParameter("id"));
         TableDBContext tDB = new TableDBContext();
-        tDB.delete(id);
-        response.sendRedirect("list");
+        table t = tDB.getTable(id);
+        request.setAttribute("Table", t);
+        request.getRequestDispatcher("/view/table/detail.jsp").forward(request, response);
         }
     }
 

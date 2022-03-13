@@ -56,6 +56,10 @@
         <servlet-name>DeleteTableController</servlet-name>
         <servlet-class>controller.table.DeleteTableController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailTableController</servlet-name>
+        <servlet-class>controller.table.DetailTableController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/account/login</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>DeleteTableController</servlet-name>
         <url-pattern>/table/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailTableController</servlet-name>
+        <url-pattern>/table/detail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

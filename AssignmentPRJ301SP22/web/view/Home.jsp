@@ -40,9 +40,8 @@
         <div class="mid">
             <div class="banner" style="background-color: black;">
                 <div class="items" style="float: left;">
-                <a href="">Home</a>
-                <a href="${menu}">Menu</a>
-                <a href="">Promotion</a>
+                <a href="food">Home</a>
+                <a href="${menu}">Menu</a>               
                 <a href="">Order</a>
                 <a href="">News</a>
                 

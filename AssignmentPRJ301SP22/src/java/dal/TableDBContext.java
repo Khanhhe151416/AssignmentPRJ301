@@ -90,13 +90,13 @@ public class TableDBContext extends DBContext{
      public table getTable(int id){
       
         try {
-            String sql ="select tblid, name, status from TBL where tblid = ?";
+            String sql ="select tblid, [name], [status] from TBL where tblid = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, id);
             ResultSet rs = stm.executeQuery();
             if (rs.next()) {                
                 table table = new table();
-                table.setId(rs.getInt("id"));
+                table.setId(rs.getInt("tblid"));
                 table.setName(rs.getString("name"));
                 table.setStatus(rs.getBoolean("status"));
                               

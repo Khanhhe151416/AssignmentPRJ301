@@ -16,7 +16,14 @@
        <form action="update" method="Post">
             ID:${requestScope.Table.id}<input type="hidden" name="id" value="${requestScope.Table.id}"/><br>
             Name:<input type="text" name="name" value="${requestScope.Table.name}" /><br>
-            Status:<input type="text" name="status" value="${requestScope.Table.status}"/><br>
+            Status:<input type="radio" name="status" <c:if test="${requestScope.Table.status == true}">
+                          checked="checked"
+            </c:if> value="Empty"/>Empty
+            <input type="radio" name="status" 
+                   <c:if test="${requestScope.Table.status == false}">
+                          checked="checked"
+            </c:if>value="Not Empty"/>Not Empty
+            <br>
            
             <br><input type="submit" value="Save"/>
         </form>

@@ -15,7 +15,14 @@
     <body>
         ID:${requestScope.Table.id}<br>
         Name:${requestScope.Table.name}<br>
-        Status:${requestScope.Table.status}<br>
-        Quantity:${requestScope.Table.quantity.group}
+        Status:<input type="radio" disabled="" name="status" <c:if test="${requestScope.Table.status == true}">
+                          checked="checked"
+            </c:if> value="Empty"/>Empty
+        <input type="radio" name="status" disabled=""
+                   <c:if test="${requestScope.Table.status == false}">
+                          checked="checked"
+            </c:if>value="Not Empty"/>Not Empty
+            
+        
     </body>
 </html>
