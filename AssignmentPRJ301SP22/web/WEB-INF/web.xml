@@ -40,6 +40,22 @@
         <servlet-name>StaffListController</servlet-name>
         <servlet-class>controller.staff.StaffListController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListTableController</servlet-name>
+        <servlet-class>controller.table.ListTableController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertTableController</servlet-name>
+        <servlet-class>controller.table.InsertTableController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateTableController</servlet-name>
+        <servlet-class>controller.table.UpdateTableController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteTableController</servlet-name>
+        <servlet-class>controller.table.DeleteTableController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/account/login</url-pattern>
@@ -79,6 +95,22 @@
     <servlet-mapping>
         <servlet-name>StaffListController</servlet-name>
         <url-pattern>/staff/list</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListTableController</servlet-name>
+        <url-pattern>/table/list</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertTableController</servlet-name>
+        <url-pattern>/table/insert</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateTableController</servlet-name>
+        <url-pattern>/table/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteTableController</servlet-name>
+        <url-pattern>/table/delete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
