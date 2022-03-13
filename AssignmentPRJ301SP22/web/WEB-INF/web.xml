@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <filter>
+        <filter-name>OrderFilter</filter-name>
+        <filter-class>controller.filter.OrderFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>OrderFilter</filter-name>
+        <url-pattern>/order/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>controller.auth.LoginController</servlet-class>
@@ -60,6 +68,22 @@
         <servlet-name>DetailTableController</servlet-name>
         <servlet-class>controller.table.DetailTableController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OrderController</servlet-name>
+        <servlet-class>controller.order.OrderTableController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderFoodController</servlet-name>
+        <servlet-class>controller.order.OrderFoodController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BillController</servlet-name>
+        <servlet-class>controller.bill.BillController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>controller.auth.LogoutController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/account/login</url-pattern>
@@ -119,6 +143,22 @@
     <servlet-mapping>
         <servlet-name>DetailTableController</servlet-name>
         <url-pattern>/table/detail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderController</servlet-name>
+        <url-pattern>/order/table</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderFoodController</servlet-name>
+        <url-pattern>/order/food</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BillController</servlet-name>
+        <url-pattern>/BillController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/account/logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

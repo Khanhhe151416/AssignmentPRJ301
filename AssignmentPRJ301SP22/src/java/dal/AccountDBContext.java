@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Role;
 import model.account;
 
 /**
@@ -43,7 +44,7 @@ public class AccountDBContext extends DBContext{
     
     public account getAccount(String user, String pass){
         try {
-            String sql = "select * from Account where [username] = ? and [password] = ?";
+            String sql = "select * from Account a join Role r on a.roleId = r.rid where [username] = ? and [password] = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, user);
             stm.setString(2, pass);
@@ -53,6 +54,10 @@ public class AccountDBContext extends DBContext{
                 acc.setUser(rs.getString("username"));
                 acc.setPass(rs.getString("password"));
                 acc.setDisplayName(rs.getString("displayname"));
+                Role r = new Role();
+                r.setId(rs.getInt("rid"));
+                r.setName(rs.getString("name"));
+                acc.setRole(r);
                 return acc;
             }
         } catch (SQLException ex) {
@@ -64,11 +69,12 @@ public class AccountDBContext extends DBContext{
     
     public void insert(account acc){
         try {
-            String sql = "Insert into Account ([username],[password],[displayname]) values(?,?,?)";
+            String sql = "Insert into Account ([username],[password],[displayname],roleId) values(?,?,?,?)";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, acc.getUser());
             stm.setString(2, acc.getPass());
             stm.setString(3, acc.getDisplayName());
+            stm.setInt(4, acc.getRole().getId());
             stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);

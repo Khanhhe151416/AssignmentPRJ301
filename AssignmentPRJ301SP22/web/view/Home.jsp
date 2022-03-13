@@ -17,9 +17,10 @@
     </head>
     
     <body>
-        
+        <c:url value="/order/table" var="orderTable"/>
         <c:url value="/account/login" var="login"/>
         <c:url value="/food/list" var="menu"/>
+        <c:url value="/account/logout" var="logout"/>
         <div class="header" >
             <div class="left">
                 <img src="http://images.squarespace-cdn.com/content/v1/56fd52eb7da24f1b26011b42/1461637294436-YVPQ107P54NFARBCENQJ/logo+khong+phong+nen.png?format=1500w" alt=""/>
@@ -30,9 +31,24 @@
             </div>
             
             <div class="right">
-                <a href="../view/admin/admin.jsp">Admin</a>
+                
+                <c:if test="${sessionScope.account != null}">
+                    <br>
+                    <br>
+                    <br>
+                    <c:if test="${sessionScope.account.role.id == 1}">
+                <a style="margin-top: 50px;" href="../view/admin/admin.jsp">Admin</a>
+                    </c:if>
+                    ${sessionScope.account.displayName}
+                     <a style="margin-top: 50px;" href="${logout}">Logout</a>
+                     
+                </c:if>
+                     
+                <c:if test="${sessionScope.account == null}">
                 <img src="https://logodix.com/logo/1727561.png">
                 <a href="${login}">Login</a>
+                </c:if>
+                
             </div>
             
         </div>
@@ -42,7 +58,7 @@
                 <div class="items" style="float: left;">
                 <a href="food">Home</a>
                 <a href="${menu}">Menu</a>               
-                <a href="">Order</a>
+                <a href="${orderTable}">Order</a>
                 <a href="">News</a>
                 
                 </div>

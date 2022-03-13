@@ -39,8 +39,9 @@ body{
 }
 .right a{
     margin-top: 40px;
-    margin-right: 50px;
+    margin-right: 20px;
     color: white;
+    
     text-decoration: none;
 }
 .name_restaurant{

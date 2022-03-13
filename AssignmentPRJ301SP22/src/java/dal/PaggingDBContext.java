@@ -85,10 +85,24 @@ public class PaggingDBContext extends DBContext{
         }
         return foods;
     }
-    public int getRowCount(){
+    public int getRowCount(String type){
         try {
-            String sql="Select count(*) as total from Food";
+            String sql="Select count(*) as total from Food where typeId = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, type);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next()){
+                return rs.getInt("total");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PaggingDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+     public int getRowCount(){
+        try {
+            String sql="Select count(*) as total from Food ";
+            PreparedStatement stm = connection.prepareStatement(sql);           
             ResultSet rs = stm.executeQuery();
             if(rs.next()){
                 return rs.getInt("total");

@@ -45,7 +45,7 @@
     <body>
         <c:url value="/account/insert" var="insert"/>
         <c:url value="/home/food" var="home"/>
-
+        <c:url value="/account/update" var="update"/>
         <div class="login">
             <div class="heading">
                 <h2>Sign in</h2>
@@ -67,7 +67,7 @@
                     <a href="${insert}">Register</a>
                     <a class="Cancel" href="${home}">Cancel</a>
                     <br>
-                    <br><a href="update">Change Password</a>
+                    <br><a href="${update}">Change Password</a>
                 
             </div>
         </div>

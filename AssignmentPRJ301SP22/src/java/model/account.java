@@ -13,6 +13,7 @@ public class account {
     private String user;
     private String pass;
     private String displayName;
+    private Role role;
 
     public String getUser() {
         return user;
@@ -37,6 +38,15 @@ public class account {
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+    
     
     
 }

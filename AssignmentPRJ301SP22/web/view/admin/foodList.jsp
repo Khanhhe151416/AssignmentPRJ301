@@ -17,6 +17,7 @@
         
     </head>
     <body>
+        <c:url value="/home/food" var="home"/>
         <table border="1px">
             <tr>
                 <td>ID</td>
@@ -45,6 +46,7 @@
             generatePagger('paggerbottom',${requestScope.pageIndex},${requestScope.totalPage},2);
         </script>
         <br>
-        <a href="insert">Insert</a>
+        <a href="insert">Insert</a><br>
+        <a href="${home}">Home</a>
     </body>
 </html>

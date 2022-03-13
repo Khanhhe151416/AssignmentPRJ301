@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.auth;
+package controller.order;
 
-import dal.AccountDBContext;
+import dal.PaggingDBContext;
+import dal.TableDBContext;
+import dal.TypeFoodDBConext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -13,14 +15,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Role;
-import model.account;
+import model.food;
+import model.table;
 
 /**
  *
  * @author doan7
  */
-public class InsertController extends HttpServlet {
+public class OrderTableController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,7 +33,21 @@ public class InsertController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+              
+           
+             TableDBContext tblDB = new TableDBContext();
+            List<table> tables = tblDB.getTables();
+            request.setAttribute("Tables", tables);
+            request.getRequestDispatcher("../view/order/order.jsp").forward(request, response);
+            
+        
+            
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -45,7 +61,7 @@ public class InsertController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("../view/auth/signUp.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -59,37 +75,7 @@ public class InsertController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String user = request.getParameter("user");
-        String pass = request.getParameter("pass");
-        String repass = request.getParameter("repass");
-        int roleId = 2;
-        AccountDBContext aDB = new AccountDBContext();
-        account acc = aDB.getAccountByUser(user);
-        String err;
-          if(user.isEmpty() || pass.isEmpty()){
-             err = "Username, Password and Repeat Password is not empty ! ";
-            request.setAttribute("err", err);
-            request.getRequestDispatcher("../view/auth/signUp.jsp").forward(request, response);
-        }
-          else if(!pass.equals(repass) || acc != null ){
-              err = "Username is exist or repassword is wrong ! ";
-            request.setAttribute("err", err);
-            request.getRequestDispatcher("../view/auth/signUp.jsp").forward(request, response);
-        }      
-        else{
-            account newAcc = new account();
-            newAcc.setUser(user);
-            newAcc.setPass(pass);
-            newAcc.setDisplayName(user);
-              Role r = new Role();
-              r.setId(roleId);
-            newAcc.setRole(r);
-            aDB.insert(newAcc);
-            String success ="Register successfull!";
-            request.setAttribute("success", success);
-            request.getRequestDispatcher("../view/auth/signUp.jsp").forward(request, response);
-        }
-        
+        processRequest(request, response);
     }
 
     /**

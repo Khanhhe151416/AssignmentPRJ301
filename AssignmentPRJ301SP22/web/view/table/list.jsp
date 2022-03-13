@@ -26,6 +26,7 @@
         </script>
     </head>
     <body>
+        <c:url value="/home/food" var="home"/>
         <table border="1px">
             <tr>
                 <td>Name</td>
@@ -52,6 +53,7 @@
                 </tr>
             </c:forEach>
         </table>
-        <a href="insert">Insert</a>
+        <a href="insert">Insert</a><br>
+        <a href="${home}">Home</a>
     </body>
 </html>

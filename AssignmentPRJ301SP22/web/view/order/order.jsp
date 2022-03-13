@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <script src="../js/orderTable.js" type="text/javascript"></script>
     </head>
    <style>
         .foodTable{
@@ -22,11 +23,14 @@
             float:left;
             background-color: #20fc03;
             
+            a{
+                margin-top: 1000px;
+            }
             
         }
     </style>
     <body>
-        <c:url value="../view/Home.jsp" var="home"/>
+        <c:url value="/home/food" var="home"/>
         
         
         <div>
@@ -34,7 +38,7 @@
             <c:forEach items="${requestScope.Tables}" var="t">
                
                     
-                <input class="foodTable" type="button" onclick="" value="${t.name}"/>
+                <input class="foodTable" type="button" onclick="OrderFood(${t.id})" value="${t.name}"/>
                     
                 
             </c:forEach>
