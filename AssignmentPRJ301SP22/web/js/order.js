@@ -25,4 +25,8 @@
      }
      container.innerHTML = text;
  }
+ 
+ function addToBill(fid,tblid){
+     window.location.href = "bill?fid="+fid+"&tid="+tblid;
+ }
 

@@ -36,6 +36,12 @@
     border-radius: 2px;
     padding: 2px;
 }
+.Left{
+    float: left;
+}
+.Right{
+    float: right;
+}
     </style>
     <body>
         <h2><c:forEach items="${requestScope.Tables}" var="tbl">
@@ -44,6 +50,8 @@
                 </c:if>
         </c:forEach></h2>
         <c:url value="/home/food" var="home"/>
+        <div>
+            <div class="Left">
         <form action="food">
             <input type="text" name="tid" value="${requestScope.tid}" hidden=""/><br>
             <select name="typeId">
@@ -65,6 +73,7 @@
                 <td>Price</td>
                 <td>Image</td>
                 <td>Type</td>
+                <td></td>
             </tr>
             <c:forEach items="${requestScope.Foods}" var="f">
                 <tr>
@@ -77,11 +86,31 @@
                             <td>${tf.name}</td>
                         </c:if>
                     </c:forEach>
+                            <td><input type="button" onclick="addToBill(${f.id},${requestScope.tid})" value="Add"></td>
                 </tr>
             </c:forEach>
         </table>
         <div class="pagger" id="paggerbottom"></div><br>
         <a href="${home}">Home</a>
+            </div>
+            <div class="Right">
+                <form action="bill" medthod="Post">
+                    <input type="text" hidden="" name="tid" value="${requestScope.tid}">
+                    <input type="text" hidden="" name="typeId" value="${requestScope.rawType}">
+                <input type="submit" value="ShowBill"/>
+                </form>
+                <div class="bill">
+            <c:forEach items="${requestScope.Tables}" var="tbl">
+                <c:if test="${tbl.id == requestScope.tid}">
+                    Table: ${tbl.name}
+                </c:if>
+            </c:forEach>
+                    <c:forEach items="${requestScope.listF}" var="f">
+                    ${f.name}
+                </c:forEach>
+                </div>
+            </div>
+        </div>
         <script>
             generatePaggerOrderFood('paggerbottom',${requestScope.pageIndex},${requestScope.totalPage},${requestScope.tid},${requestScope.rawType},2);
         </script>

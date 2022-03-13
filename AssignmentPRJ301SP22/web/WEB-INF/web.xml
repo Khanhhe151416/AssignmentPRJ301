@@ -154,7 +154,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>BillController</servlet-name>
-        <url-pattern>/BillController</url-pattern>
+        <url-pattern>/order/bill</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
