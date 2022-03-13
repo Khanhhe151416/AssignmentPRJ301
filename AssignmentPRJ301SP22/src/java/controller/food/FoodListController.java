@@ -30,6 +30,10 @@ public class FoodListController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            String raw_type = request.getParameter("typeId");
+            if(raw_type == null ) raw_type = "0";
+            if(raw_type ==  null || raw_type.equals("0")){
             PaggingDBContext pDB = new PaggingDBContext();
             String raw_page = request.getParameter("page");
             int pageSize = 10;
@@ -46,10 +50,33 @@ public class FoodListController extends HttpServlet {
             request.setAttribute("pageIndex", pageIndex);
             request.setAttribute("totalPage", totalPage);
             request.setAttribute("Foods", foods);
+            request.setAttribute("rawType", raw_type);
             TypeFoodDBConext tDB = new TypeFoodDBConext();
             request.setAttribute("TypeFoods", tDB.getTypeFoods());
             request.getRequestDispatcher("../view/food/list.jsp").forward(request, response);
+            } 
+            else{
+                PaggingDBContext pDB = new PaggingDBContext();
+            String raw_page = request.getParameter("page");
+            int pageSize = 10;
             
+            if(raw_page == null || raw_page.length() == 0){
+                raw_page = "1";
+                
+            }
+            
+            int pageIndex = Integer.parseInt(raw_page);
+            int totalRow = pDB.getRowCount();
+            int totalPage = (totalRow % pageSize == 0)? totalRow / pageSize : (totalRow / pageSize) + 1;
+            List<food> foods = pDB.getFoods(pageSize, pageIndex, Integer.parseInt(raw_type));
+            request.setAttribute("pageIndex", pageIndex);
+            request.setAttribute("totalPage", totalPage);
+            request.setAttribute("Foods", foods);
+            request.setAttribute("rawType", raw_type);
+            TypeFoodDBConext tDB = new TypeFoodDBConext();
+            request.setAttribute("TypeFoods", tDB.getTypeFoods());
+            request.getRequestDispatcher("../view/food/list.jsp").forward(request, response);
+            }
         }
     }
 

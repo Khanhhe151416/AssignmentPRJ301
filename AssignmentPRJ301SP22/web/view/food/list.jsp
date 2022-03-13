@@ -40,6 +40,19 @@
     </style>
     <body>
         <c:url value="/home/food" var="home"/>
+        <form action="list">
+            <select name="typeId">
+                <option value="0">All</option>
+                <c:forEach items="${requestScope.TypeFoods}" var="tf">
+                    
+                    <option <c:if test="${tf.id == Integer.parseInt(requestScope.rawType)}">
+                            selected ="selected"
+                    </c:if> value="${tf.id}">${tf.name}</option>                    
+                </c:forEach>
+                    <input type="submit" value="Search"/>
+            </select>
+            
+        </form>
         <table border="1px">
             <tr>
                 

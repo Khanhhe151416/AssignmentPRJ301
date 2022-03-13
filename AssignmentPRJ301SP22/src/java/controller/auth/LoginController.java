@@ -66,7 +66,7 @@ public class LoginController extends HttpServlet {
         account acc = aDB.getAccount(user, pass);
         if(acc != null){
             request.getSession().setAttribute("account", acc);
-            response.sendRedirect("../view/Home.jsp");
+            request.getServletContext().getRequestDispatcher("/home/food").forward(request, response);
         }
         else{
             err = "Login fail!";
