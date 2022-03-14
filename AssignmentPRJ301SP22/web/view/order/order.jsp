@@ -14,6 +14,9 @@
         <script src="../js/orderTable.js" type="text/javascript"></script>
     </head>
    <style>
+       body{
+            background-image: url("https://xmccomplex.com.vn/wp-content/uploads/2021/12/Background-cho-word-780x470.jpg");
+        }
         .foodTable{
             height: 50px;
             

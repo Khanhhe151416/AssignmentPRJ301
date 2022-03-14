@@ -14,6 +14,13 @@
         <script src="../js/order.js" type="text/javascript"></script>
     </head>
     <style>
+        body{
+            background-image: url("https://media.istockphoto.com/photos/set-of-food-snacks-of-italian-cuisine-on-a-wooden-background-top-view-picture-id1065782292");
+        }
+        table{
+            background-color: white;
+        }
+        
         img{
             width: 100px;
             height: 60px;
@@ -94,17 +101,7 @@
         <a href="${home}">Home</a>
             </div>
             <div class="Right">
-                <form action="bill" medthod="Post">
-                    <input type="text" hidden="" name="tid" value="${requestScope.tid}">
-                    <input type="text" hidden="" name="typeId" value="${requestScope.rawType}">
-                <input type="submit" value="ShowBill"/>
-                </form>
-                <div class="bill">
-            <c:forEach items="${requestScope.Tables}" var="tbl">
-                <c:if test="${tbl.id == requestScope.tid}">
-                    Table: ${tbl.name}
-                </c:if>
-            </c:forEach>
+               
                     <c:forEach items="${requestScope.listF}" var="f">
                     ${f.name}
                 </c:forEach>

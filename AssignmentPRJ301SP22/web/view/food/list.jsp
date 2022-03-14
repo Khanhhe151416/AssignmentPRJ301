@@ -15,6 +15,12 @@
         
     </head>
     <style>
+        body{
+            background-image: url("https://i.pinimg.com/550x/ba/1c/a9/ba1ca929ec31cc6b61f132aeefa8c5a4.jpg");
+        }
+        table{
+            background-color: white;
+        }
         img{
             width: 100px;
             height: 60px;
@@ -36,6 +42,9 @@
     background-color: blue;
     border-radius: 2px;
     padding: 2px;
+}
+.ahome{
+    color: white;
 }
     </style>
     <body>
@@ -76,7 +85,7 @@
             </c:forEach>
         </table>
         <div class="pagger" id="paggerbottom"></div><br>
-        <a href="${home}">Home</a>
+        <a class="ahome" href="${home}">Home</a>
         <script>
             generatePagger('paggerbottom',${requestScope.pageIndex},${requestScope.totalPage},2);
         </script>

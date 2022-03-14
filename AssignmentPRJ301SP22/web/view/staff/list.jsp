@@ -46,14 +46,16 @@
                 <td>ID</td>
                 <td>Name</td>
                 <td>Salary</td>
-                
+                <td></td>
+                <td></td>
             </tr>
             <c:forEach items="${requestScope.Staffs}" var="s">
                 <tr>
                     <td>${s.id}</td>
                     <td>${s.name}</td>
                     <td>${s.salary}</td>
-                    
+                    <td><input type="button" onclick="" value="Update"/></td>
+                    <td><input type="button" onclick="" value="Delete"/></td>
                    
                 </tr>
             </c:forEach>

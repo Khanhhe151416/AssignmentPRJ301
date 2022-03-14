@@ -21,6 +21,29 @@ import model.account;
  */
 public class AccountDBContext extends DBContext{
     
+     public List<account> getAccounts(){
+        List<account> accounts = new ArrayList<>();
+        try {
+            String sql ="select * from Account a join Role r on a.roleId = r.rid";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {                
+                 account account = new  account();
+                account.setUser(rs.getString("username"));
+                account.setPass(rs.getString("password"));
+                account.setDisplayName(rs.getString("displayname"));
+                Role r = new Role();
+                r.setId(rs.getInt("rid"));
+                r.setName(rs.getString("name"));
+                account.setRole(r);
+                accounts.add(account);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return accounts;
+    }
+    
     public account getAccountByUser(String user){
             
         try {
@@ -92,5 +115,7 @@ public class AccountDBContext extends DBContext{
             Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
     
 }
