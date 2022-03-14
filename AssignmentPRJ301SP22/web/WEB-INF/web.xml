@@ -88,6 +88,10 @@
         <servlet-name>ListController</servlet-name>
         <servlet-class>controller.auth.ListController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StaffInsertController</servlet-name>
+        <servlet-class>controller.staff.StaffInsertController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/account/login</url-pattern>
@@ -167,6 +171,10 @@
     <servlet-mapping>
         <servlet-name>ListController</servlet-name>
         <url-pattern>/account/list</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffInsertController</servlet-name>
+        <url-pattern>/staff/insert</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
