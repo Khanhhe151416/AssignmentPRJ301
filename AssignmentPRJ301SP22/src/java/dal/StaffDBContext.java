@@ -25,7 +25,7 @@ public class StaffDBContext extends DBContext{
         try {
             String sql = "select * from\n" +
                 "(select ROW_NUMBER() over (order by sid asc) as rownum, sid,name,salary, username,password,displayname from Staff s join Account a on s.account = a.username) t\n" +
-                "where rownum >= (@PageIndex - 1)*@PageSize +1 and rownum <= @PageIndex*@PageSize";
+                "where rownum >= (? - 1)*? +1 and rownum <= ?*?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, pageIndex);
             stm.setInt(2, pageSize);
@@ -57,5 +57,19 @@ public class StaffDBContext extends DBContext{
         } catch (SQLException ex) {
             Logger.getLogger(StaffDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public int getRowCount(){
+        try {
+            String sql="Select count(*) as total from Staff ";
+            PreparedStatement stm = connection.prepareStatement(sql);           
+            ResultSet rs = stm.executeQuery();
+            if(rs.next()){
+                return rs.getInt("total");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PaggingDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
 }

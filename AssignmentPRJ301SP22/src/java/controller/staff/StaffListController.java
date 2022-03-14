@@ -5,12 +5,15 @@
  */
 package controller.staff;
 
+import dal.StaffDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.staff;
 
 /**
  *
@@ -31,7 +34,19 @@ public class StaffListController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+            StaffDBContext sDB = new StaffDBContext();
+            int pageSize = 6;
+            String raw_page = request.getParameter("page");
+            if(raw_page == null || raw_page.length() == 0)
+                raw_page = "1";
+            int totalRows = sDB.getRowCount();
+            int totalPage = (totalRows % pageSize == 0)? totalRows / pageSize : (totalRows / pageSize) +1;
+            int pageIndex = Integer.parseInt(raw_page);
+            List<staff> staffs = sDB.getStaffs(pageIndex, pageSize);
+            request.setAttribute("Staffs", staffs);
+            request.setAttribute("pageIndex", pageIndex);
+            request.setAttribute("totalPage", totalPage);
+            request.getRequestDispatcher("../view/staff/list.jsp").forward(request, response);
            
         }
     }
