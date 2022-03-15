@@ -30,3 +30,5 @@ function generatePagger(div, pageIndex, totalPage, gap){
     }
     container.innerHTML = text;
 }
+
+

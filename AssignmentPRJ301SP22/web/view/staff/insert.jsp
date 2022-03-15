@@ -12,10 +12,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form>
+        <form action="insert" method="post">
             Name:<input type="text" name="name"/><br>
-            Salary:<input type="text" name="salary:"/><br>
-            
+            DOB:<input type="date" name="dob"/><br>           
+            Phone:<input type="text" name="phone" /><br>
+            Salary:<input type="text" name="salary"/><br>
+            Gender:<input type="radio" name="gender" checked="checked" value="Male"/>Male
+            <input type="radio" name="gender"  value="FeMale"/>FeMale<br>
+            <input type="submit" value="Save"/>
             
         </form>
     </body>

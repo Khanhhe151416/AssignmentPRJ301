@@ -8,18 +8,16 @@ package controller.staff;
 import dal.StaffDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.staff;
 
 /**
  *
  * @author doan7
  */
-public class StaffInsertController extends HttpServlet {
+public class StaffDeleteController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,7 +28,17 @@ public class StaffInsertController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            
+            StaffDBContext sDB = new StaffDBContext();
+            sDB.delete(Integer.parseInt(request.getParameter("sid")));
+            response.sendRedirect("list");
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -44,8 +52,7 @@ public class StaffInsertController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.getRequestDispatcher("../view/staff/insert.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -59,16 +66,7 @@ public class StaffInsertController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        StaffDBContext sDB = new StaffDBContext();
-        staff s = new staff();
-        s.setName(request.getParameter("name"));
-        s.setDOB(Date.valueOf(request.getParameter("dob")));
-        s.setPhone(request.getParameter("phone"));
-        s.setSalary(Float.parseFloat(request.getParameter("salary")));
-        s.setGender(request.getParameter("gender").equals("Male"));
-        sDB.insert(s);
-        response.sendRedirect("list");
-        
+        processRequest(request, response);
     }
 
     /**

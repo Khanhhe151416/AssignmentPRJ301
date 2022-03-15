@@ -19,7 +19,7 @@ import model.staff;
  *
  * @author doan7
  */
-public class StaffInsertController extends HttpServlet {
+public class StaffUpdateController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,7 +30,7 @@ public class StaffInsertController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -44,8 +44,11 @@ public class StaffInsertController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.getRequestDispatcher("../view/staff/insert.jsp").forward(request, response);
+        int sid = Integer.parseInt(request.getParameter("sid"));
+            StaffDBContext sDB = new StaffDBContext();
+            staff s = sDB.getStaff(sid);
+            request.setAttribute("staff", s);
+            request.getRequestDispatcher("../view/staff/update.jsp").forward(request, response);
     }
 
     /**
@@ -59,14 +62,15 @@ public class StaffInsertController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        StaffDBContext sDB = new StaffDBContext();
         staff s = new staff();
+        s.setId(Integer.parseInt(request.getParameter("id")));
         s.setName(request.getParameter("name"));
         s.setDOB(Date.valueOf(request.getParameter("dob")));
-        s.setPhone(request.getParameter("phone"));
         s.setSalary(Float.parseFloat(request.getParameter("salary")));
+        s.setPhone(request.getParameter("phone"));
         s.setGender(request.getParameter("gender").equals("Male"));
-        sDB.insert(s);
+        StaffDBContext sDB = new StaffDBContext();
+        sDB.update(s);
         response.sendRedirect("list");
         
     }
