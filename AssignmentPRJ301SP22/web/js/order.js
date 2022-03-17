@@ -26,7 +26,7 @@
      container.innerHTML = text;
  }
  
- function addToBill(fid,tblid){
-     window.location.href = "bill?fid="+fid+"&tid="+tblid;
+ function addToBill(fid,tblid,quantity,price){
+     window.location.href = "bill?fid="+fid+"&tid="+tblid+"&quantity="+quantity+"&price="+price;
  }
 

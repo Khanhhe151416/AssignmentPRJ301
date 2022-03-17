@@ -38,9 +38,7 @@
         
         <div>
             
-            <c:forEach items="${requestScope.Tables}" var="t">
-               
-                    
+            <c:forEach items="${requestScope.Tables}" var="t">                
                 <input class="foodTable" type="button" onclick="OrderFood(${t.id})" value="${t.name}"/>
                     
                 

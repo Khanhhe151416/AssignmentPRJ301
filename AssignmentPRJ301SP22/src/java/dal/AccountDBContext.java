@@ -67,7 +67,7 @@ public class AccountDBContext extends DBContext{
     
     public account getAccount(String user, String pass){
         try {
-            String sql = "select * from Account a join Role r on a.roleId = r.rid where [username] = ? and [password] = ?";
+            String sql = "select * from Account a join Role r on a.roleId = r.rid  where [username] = ? and [password] = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, user);
             stm.setString(2, pass);
@@ -77,10 +77,12 @@ public class AccountDBContext extends DBContext{
                 acc.setUser(rs.getString("username"));
                 acc.setPass(rs.getString("password"));
                 acc.setDisplayName(rs.getString("displayname"));
+                acc.setStaffId(rs.getInt("staffId"));
                 Role r = new Role();
                 r.setId(rs.getInt("rid"));
                 r.setName(rs.getString("name"));
                 acc.setRole(r);
+                
                 return acc;
             }
         } catch (SQLException ex) {

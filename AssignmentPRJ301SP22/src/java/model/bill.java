@@ -18,10 +18,29 @@ public class bill {
     private String name;
     private Date dateBill;
     private float totalPayment;
-    private table table;
-    private staff staff;
+   private int tableid;
+   private int staffid;
+   private int status;
+
+    public bill(int id, String name, Date dateBill, float totalPayment, int tableid, int staffid, int status) {
+        this.id = id;
+        this.name = name;
+        this.dateBill = dateBill;
+        this.totalPayment = totalPayment;
+        this.tableid = tableid;
+        this.staffid = staffid;
+        this.status = status;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     
-    private List<FoodBill> foodBill = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -55,30 +74,25 @@ public class bill {
         this.totalPayment = totalPayment;
     }
 
-    public table getTable() {
-        return table;
+    public int getTableid() {
+        return tableid;
     }
 
-    public void setTable(table table) {
-        this.table = table;
+    public void setTableid(int tableid) {
+        this.tableid = tableid;
     }
 
-    public staff getStaff() {
-        return staff;
+    public int getStaffid() {
+        return staffid;
     }
 
-    public void setStaff(staff staff) {
-        this.staff = staff;
+    public void setStaffid(int staffid) {
+        this.staffid = staffid;
     }
 
-    public List<FoodBill> getFoodBill() {
-        return foodBill;
+    public bill() {
     }
-
-    public void setFoodBill(List<FoodBill> foodBill) {
-        this.foodBill = foodBill;
-    }
-    
+   
     
     
 }

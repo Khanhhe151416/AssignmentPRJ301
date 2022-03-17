@@ -93,7 +93,7 @@
                             <td>${tf.name}</td>
                         </c:if>
                     </c:forEach>
-                            <td><input type="button" onclick="addToBill(${f.id},${requestScope.tid})" value="Add"></td>
+                            <td><input type="button" onclick="addToBill(${f.id},${requestScope.tid},1,${f.price})" value="Add"></td>
                 </tr>
             </c:forEach>
         </table>

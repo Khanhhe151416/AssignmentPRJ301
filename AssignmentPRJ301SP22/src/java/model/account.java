@@ -14,6 +14,7 @@ public class account {
     private String pass;
     private String displayName;
     private Role role;
+    private int staffId;
 
     public String getUser() {
         return user;
@@ -46,6 +47,18 @@ public class account {
     public void setRole(Role role) {
         this.role = role;
     }
+
+    public int getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(int staffId) {
+        this.staffId = staffId;
+    }
+
+   
+    
+    
     
     
     

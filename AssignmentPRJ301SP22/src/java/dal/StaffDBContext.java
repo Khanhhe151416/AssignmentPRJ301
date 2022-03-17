@@ -48,6 +48,7 @@ public class StaffDBContext extends DBContext{
         }
         return list;
     }
+    
     public void insert(staff s){
         try {
             String sql = "insert into Staff(name,DOB,phone,salary,gender) values(?,?,?,?,?)";            
@@ -131,5 +132,30 @@ public class StaffDBContext extends DBContext{
             Logger.getLogger(PaggingDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
         return -1;
+    }
+    
+    public List<staff> getStaffs(){
+        List<staff> list = new ArrayList<>();
+        try {
+            String sql = "select * from Staff" ;
+                
+            PreparedStatement stm = connection.prepareStatement(sql);
+            
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {                
+                staff s = new staff();
+                s.setId(rs.getInt("sid"));
+                s.setName(rs.getString("name"));
+                s.setSalary(Float.parseFloat(rs.getString("salary")));
+                s.setDOB(rs.getDate("DOB"));
+                s.setGender(rs.getBoolean("gender"));
+                s.setPhone(rs.getString("phone"));
+               
+                list.add(s);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StaffDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 }
