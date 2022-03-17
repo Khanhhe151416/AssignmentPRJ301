@@ -55,7 +55,7 @@ public class BillDBContext extends DBContext {
       return checkBillID;
     }
     public void addBill(int tableID, int foodID,int staffID,float money,int quantity){
-        int billID = 0;
+        int billID = getAllBllbyID(tableID);
         if(getAllBllbyID(tableID) == 0){
             addNewBill(tableID, staffID);
             billID = getAllBllbyID(tableID);

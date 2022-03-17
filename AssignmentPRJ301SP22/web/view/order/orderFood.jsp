@@ -14,13 +14,11 @@
         <script src="../js/order.js" type="text/javascript"></script>
     </head>
     <style>
-        body{
-            background-image: url("https://media.istockphoto.com/photos/set-of-food-snacks-of-italian-cuisine-on-a-wooden-background-top-view-picture-id1065782292");
-        }
+       
         table{
             background-color: white;
         }
-        
+
         img{
             width: 100px;
             height: 60px;
@@ -29,87 +27,94 @@
             margin-top: 30px;
         }
         .pagger a{
-    border: 1px solid aliceblue;
-    border-radius: 2px;
-    padding: 2px;
-    background-color: #7E8184;
-    margin-left: 5px;
-    margin-right: 5px;
-}
+            border: 1px solid aliceblue;
+            border-radius: 2px;
+            padding: 2px;
+            background-color: #7E8184;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
         .pagger span{
-    font-weight: bold;
-    border: 1px solid aliceblue;
-    background-color: blue;
-    border-radius: 2px;
-    padding: 2px;
-}
-.Left{
-    float: left;
-}
-.Right{
-    float: right;
-}
+            font-weight: bold;
+            border: 1px solid aliceblue;
+            background-color: blue;
+            border-radius: 2px;
+            padding: 2px;
+        }
+        .Left{
+            float: left;
+        }
+        .Right{
+            float: right;
+        }
     </style>
     <body>
         <h2><c:forEach items="${requestScope.Tables}" var="tbl">
                 <c:if test="${tbl.id == requestScope.tid}">
                     Table: ${tbl.name}
                 </c:if>
-        </c:forEach></h2>
-        <c:url value="/home/food" var="home"/>
+            </c:forEach></h2>
+            <c:url value="/home/food" var="home"/>
         <div>
             <div class="Left">
-        <form action="food">
-            <input type="text" name="tid" value="${requestScope.tid}" hidden=""/><br>
-            <select name="typeId">
-                <option value="0">All</option>
-                <c:forEach items="${requestScope.TypeFoods}" var="tf">
-                    
-                    <option <c:if test="${tf.id == Integer.parseInt(requestScope.rawType)}">
-                            selected ="selected"
-                    </c:if> value="${tf.id}">${tf.name}</option>                    
-                </c:forEach>
-                    <input type="submit" value="Search"/>
-            </select>
-            
-        </form>
-        <table border="1px">
-            <tr>
-                
-                <td>Name</td>
-                <td>Price</td>
-                <td>Image</td>
-                <td>Type</td>
-                <td></td>
-            </tr>
-            <c:forEach items="${requestScope.Foods}" var="f">
-                <tr>
-                    
-                    <td>${f.name}</td>
-                    <td>${f.price}$</td>
-                    <td><img src="${f.image}"></td>
-                    <c:forEach items="${requestScope.TypeFoods}" var="tf">
-                        <c:if test="${tf.id == f.type.id}">
-                            <td>${tf.name}</td>
-                        </c:if>
+                <form action="food">
+                    <input type="text" name="tid" value="${requestScope.tid}" hidden=""/><br>
+                    <select name="typeId">
+                        <option value="0">All</option>
+                        <c:forEach items="${requestScope.TypeFoods}" var="tf">
+
+                            <option <c:if test="${tf.id == Integer.parseInt(requestScope.rawType)}">
+                                    selected ="selected"
+                                </c:if> value="${tf.id}">${tf.name}</option>                    
+                        </c:forEach>
+                        <input type="submit" value="Search"/>
+                    </select>
+
+                </form>
+                <table border="1px">
+                    <tr>
+
+                        <td>Name</td>
+                        <td>Price</td>
+                        <td>Image</td>
+                        <td>Type</td>
+                        <td></td>
+                    </tr>
+                    <c:forEach items="${requestScope.Foods}" var="f">
+                        <tr>
+
+                            <td>${f.name}</td>
+                            <td>${f.price}$</td>
+                            <td><img src="${f.image}"></td>
+                                <c:forEach items="${requestScope.TypeFoods}" var="tf">
+                                    <c:if test="${tf.id == f.type.id}">
+                                    <td>${tf.name}</td>
+                                </c:if>
+                            </c:forEach>
+                            <td><input type="button" onclick="addToBill(${f.id},${requestScope.tid}, 1,${f.price})" value="Add"></td>
+                        </tr>
                     </c:forEach>
-                            <td><input type="button" onclick="addToBill(${f.id},${requestScope.tid},1,${f.price})" value="Add"></td>
-                </tr>
-            </c:forEach>
-        </table>
-        <div class="pagger" id="paggerbottom"></div><br>
-        <a href="${home}">Home</a>
+                </table>
+                <div class="pagger" id="paggerbottom"></div><br>
+                <a href="${home}">Home</a>
             </div>
             <div class="Right">
-               
-                    <c:forEach items="${requestScope.listF}" var="f">
-                    ${f.name}
-                </c:forEach>
-                </div>
+                <table >
+                    <tr>BILL DETAIL</tr>
+                    <c:forEach items="${requestScope.details}" var="dt">
+                        <tr>
+                            <td>${dt.foodID}</td>                            
+                            <td>${dt.quantity}</td>
+                            <td>${dt.price}</td>
+                            
+                        </tr>
+                    </c:forEach>
+                </table>
             </div>
         </div>
+        </div>
         <script>
-            generatePaggerOrderFood('paggerbottom',${requestScope.pageIndex},${requestScope.totalPage},${requestScope.tid},${requestScope.rawType},2);
+            generatePaggerOrderFood('paggerbottom',${requestScope.pageIndex},${requestScope.totalPage},${requestScope.tid},${requestScope.rawType}, 2);
         </script>
     </body>
 </html>

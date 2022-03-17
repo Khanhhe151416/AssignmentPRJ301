@@ -23,11 +23,11 @@ public class BillDetailsContext extends DBContext {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 billDetails detail = new billDetails();
-                detail.setBillID(rs.getInt("billDetailsID"));
-                detail.setPrice(rs.getFloat("price"));
-                detail.setFoodID(rs.getInt("foodID"));
-                detail.setBillID(rs.getInt("billID"));
-                detail.setQuantity(rs.getInt("quantity"));
+                detail.setBillID(rs.getInt(1));
+                detail.setPrice(rs.getFloat(2));
+                detail.setFoodID(rs.getInt(5));
+                detail.setBillID(rs.getInt(4));
+                detail.setQuantity(rs.getInt(3));
                 arrayList.add(detail);
             }
         } catch (Exception e) {
