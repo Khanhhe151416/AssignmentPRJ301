@@ -4,6 +4,14 @@
     Author     : doan7
 --%>
 
+<%@page import="model.TypeFood"%>
+<%@page import="model.billDetails"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dal.BillDetailsContext"%>
+<%@page import="model.food"%>
+<%@page import="java.util.List"%>
+<%@page import="dal.FoodDBContext"%>
+<%@page import="model.FoodBill"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -101,17 +109,33 @@
             <div class="Right">
                 <table >
                     <tr>BILL DETAIL</tr>
-                    <c:forEach items="${requestScope.details}" var="dt">
-                        <tr>
-                            <td>${dt.foodID}</td>                            
-                            <td>${dt.quantity}</td>
-                            <td>${dt.price}</td>
-                            
-                        </tr>
-                    </c:forEach>
+                   <%
+                       List<TypeFood> typeFoods = (List<TypeFood>) request.getAttribute("TypeFoods");
+                      FoodDBContext fDB = new FoodDBContext();
+                      List<food> foods = fDB.getFoods();
+                      int bid =Integer.parseInt(request.getAttribute("billID").toString()) ;
+                      BillDetailsContext detailsDB = new BillDetailsContext();
+                      ArrayList<billDetails> details = detailsDB.getAllBll(bid);
+                      for(food f : foods){
+                          for(billDetails bd : details){
+                              if(f.getId() == bd.getFoodID()){
+                                  %>
+                                  <tr>
+                                  <td><%=f.getName()%></td>
+                                  <td><%=f.getPrice()%>$</td>
+                                  <td> SL: 1<td>
+                                  
+                                  </tr>
+                    <%
+                              }
+                          }
+                      }
+                      
+                   %>
+                   
                 </table>
             </div>
-        </div>
+        
         </div>
         <script>
             generatePaggerOrderFood('paggerbottom',${requestScope.pageIndex},${requestScope.totalPage},${requestScope.tid},${requestScope.rawType}, 2);

@@ -67,8 +67,11 @@ public class BillController extends HttpServlet {
         HttpSession session = request.getSession();
         account acc = (account)session.getAttribute("account");
         billDBContext.addBill(tid, fid,acc.getStaffId(), price, quantity);
+        
         BillDetailsContext detailsDB = new BillDetailsContext();
         int bid = billDBContext.getAllBllbyID(tid);
+        request.setAttribute("billID",bid );
+//        request.getRequestDispatcher("../view/order/orderFood.jsp").forward(request, response);
         ArrayList<billDetails> details = detailsDB.getAllBll(bid);
         request.setAttribute("details", details);
         

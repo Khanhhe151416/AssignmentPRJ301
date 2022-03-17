@@ -19,7 +19,7 @@ public class BillDetailsContext extends DBContext {
     public ArrayList<billDetails> getAllBll(int billID) {
         ArrayList<billDetails> arrayList = new ArrayList<billDetails>();
         try {
-            PreparedStatement st = connection.prepareStatement("select * from billDetails where billID = ? ");
+            PreparedStatement st = connection.prepareStatement("select * from billDetails where billID = '"+billID+"' ");
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 billDetails detail = new billDetails();
