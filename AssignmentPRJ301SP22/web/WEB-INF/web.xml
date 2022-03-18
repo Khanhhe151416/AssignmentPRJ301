@@ -100,6 +100,14 @@
         <servlet-name>StaffDeleteController</servlet-name>
         <servlet-class>controller.staff.StaffDeleteController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminInsertAccountController</servlet-name>
+        <servlet-class>controller.admin.AdminInsertAccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminAccountUpdateController</servlet-name>
+        <servlet-class>controller.admin.AdminAccountUpdateController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/account/login</url-pattern>
@@ -191,6 +199,14 @@
     <servlet-mapping>
         <servlet-name>StaffDeleteController</servlet-name>
         <url-pattern>/staff/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminInsertAccountController</servlet-name>
+        <url-pattern>/admin/account/insert</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminAccountUpdateController</servlet-name>
+        <url-pattern>/admin/account/update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

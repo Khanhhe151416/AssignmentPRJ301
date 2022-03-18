@@ -12,13 +12,29 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         
+         <script>
+            function doUpdate(username) {
+
+                window.location.href = "update?username=" + username;
+            }
+            function doDelete(username) {
+                var c = confirm("Are you sure ?");
+                if (c) {
+                    window.location.href = "delete?username=" + username;
+                }
+            }
+        </script>  
     </head>
     <body>
+        <c:url value="/admin/account/insert" var="insert"/>
+        <c:url value="/admin/account/update" var="update"/>
         <table border="1px">
             <tr>
                 <td>Username</td>
                 <td>Password</td>
                 <td>Display Name</td>
+                <td>Role</td>
+                
                 <td></td>
                 <td></td>
             </tr>
@@ -27,11 +43,21 @@
                     <td>${acc.user}</td>
                     <td>${acc.pass}</td>
                     <td>${acc.displayName}</td>
-                    <td><input type="button" onclick="" value="Update"/></td>
-                    <td><input type="button" onclick="" value="Delete"/></td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${acc.role.id == 1}">
+                                ADMIN
+                            </c:when >
+                            <c:when test="${acc.role.id == 2}">
+                                Customer
+                            </c:when>
+                        </c:choose>
+                    </td>
+                    <td><a href="${update}">Update</a></td>
+                    <td><input type="button" onclick="doDelete(`${acc.user}`);" value="Delete"/></td>
                 </tr>
             </c:forEach>
         </table>
-        <a href="insert">Insert</a>
+        <a href="${insert}">Insert</a>
     </body>
 </html>

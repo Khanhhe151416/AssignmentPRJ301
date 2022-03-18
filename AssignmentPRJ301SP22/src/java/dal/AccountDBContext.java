@@ -106,6 +106,8 @@ public class AccountDBContext extends DBContext{
         }
     }
     
+    
+    
     public void update(String user,String pass){
         try {
             String sql = "Update [Account] set [password] = ? where [username]= ?";
@@ -117,6 +119,7 @@ public class AccountDBContext extends DBContext{
             Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+  
     
     
     
